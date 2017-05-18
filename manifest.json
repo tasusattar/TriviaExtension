@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Athingaday",
+  "description": "Learn something new every day.",
+  "version": "0.1",
+
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches" : ["http://*/*"],
+      "js" : ["sideBar.js"]
+    }
+  ]
+
+}
