@@ -1,4 +1,28 @@
-body{ background-color: #eeeef6; }
+/*body{ background-color: #eeeef6; }*/
+
+#topLeft{
+  position: fixed;
+  display: block;
+  top: 1%;
+  left: 1%;
+  width: 10em;
+  height: 10em;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 50%;
+  border-color: black;
+  text-align: center;
+}
+
+#tlContainer{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 #navbtn{
   text-decoration: none;
@@ -12,7 +36,6 @@ body{ background-color: #eeeef6; }
 #navbtn:hover{
   color: #666666;
 }
-
 
 #content{
   font-family: "Times New Roman", Georgia, Serif;

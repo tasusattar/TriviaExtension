@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches" : ["http://*/*"],
-      "js" : ["sideBar.js"]
+      "js" : ["sideBar.js", "flashcard.js", "system.js"]
     }
   ]
 
