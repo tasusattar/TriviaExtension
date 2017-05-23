@@ -61,26 +61,32 @@
   margin-top: 1em;
 }
 
-#histObjs{
-  display: none;
-}
-
 .cardCircles {
   margin: 0.2em 0.4em;
   display: block;
   width: 2em;
   height: 2em;
-  border-style: outset;
+  border-style: solid;
   border-width: thin;
   border-radius: 50%;
   border-color: black;
   background-color: white;
 }
 
-#bookObjs{
-  display: none;
+.liked {
+  border-color: green;
+  border-width: medium;
 }
 
+.highlighted {
+  background-color: gold;
+}
+
+.disliked {
+  border-color: red;
+  background-color: red;
+  border-width: medium;
+}
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #content_screen {
     transition: margin-right .5s;
