@@ -19,22 +19,11 @@ function closeNav() {
 }
 
 function openHist() {
-  var toReplace = document.getElementById("objects");
-  toReplace.innerHTML = "<a href='#'>About</a>\n<a href='#'>Services</a>";
+  document.getElementById("bookObjs").style.display = "none";
+  document.getElementById("histObjs").style.display = "flex";
 }
 
 function openBooks() {
-  var toReplace = document.getElementById("objects");
-  toReplace.innerHTML = "<a href=\"#\">Clients</a>\n<a href=\"#\">Contacts</a>";
+  document.getElementById("histObjs").style.display = "none";
+  document.getElementById("bookObjs").style.display = "flex";
 }
-
-
-// today's date to be displayed
-var d = new Date();
-var day = d.getDate();
-var month = d.getMonth() + 1;
-var year = d.getFullYear();
-
-var fullDate = day + "/" + month + "/" + year;
-
-document.getElementById("dateDisplay").innerHTML = fullDate;

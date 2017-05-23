@@ -54,8 +54,31 @@
     border-bottom: 0.1em solid #f1f1f1;
 }
 
-#objects{
+.objs{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   margin-top: 1em;
+}
+
+#histObjs{
+  display: none;
+}
+
+.cardCircles {
+  margin: 0.2em 0.4em;
+  display: block;
+  width: 2em;
+  height: 2em;
+  border-style: outset;
+  border-width: thin;
+  border-radius: 50%;
+  border-color: black;
+  background-color: white;
+}
+
+#bookObjs{
+  display: none;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */

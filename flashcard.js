@@ -1,5 +1,11 @@
-var DisplayedCard = function(flashCard){
+var DisplayedCard = (function(){
+  var nextId = 0;
+  var nameId = "DC";
+
+  return function DisplayedCard(flashCard){
   this.flashCard = flashCard;
+  this.id = nameId + nextId.toString();
+  nextId++;
   this.displayed = false;
   this.date = "";
   this.liked = false;
@@ -7,18 +13,34 @@ var DisplayedCard = function(flashCard){
   this.disliked = false;
   this.borderColor = "black";
   this.innerColor = "white";
-};
+  };
+})();
 
-DisplayedCard.prototype.firstDisplay = function() {
+DisplayedCard.prototype.firstDisplay = function(book) {
   this.displayed = true;
   this.date = todaysDate();
+  book.addtoDisplayed(this);
+  hist.addtoDisplayed(this);
   this.selected();
+  this.makeCicle();
 };
 
 DisplayedCard.prototype.selected = function() {
   document.getElementById("info").innerHTML = this.flashCard.info;
   document.getElementById("category").innerHTML = this.flashCard.category;
+  document.getElementById("dateDisplay").innerHTML = this.date;
+};
 
+DisplayedCard.prototype.makeCicle = function() {
+  var that = this;
+  var elem = document.getElementById("histObjs");
+  var anchor = document.createElement("a");
+  anchor.href = "javascript: void(0)"
+  anchor.className = "cardCircles";
+  anchor.onclick = function(){
+    that.selected();
+  };
+  elem.appendChild(anchor);
 };
 
 DisplayedCard.prototype.likeSwitch = function() {
@@ -96,5 +118,18 @@ var Book = function(name){
   this.name = name;
   this.selected = true;
   this.undisplayed = [];
-  this.displayed = [];
+  this.displayed = {};
+};
+
+Book.prototype.addtoDisplayed = function(dCard) {
+  this.displayed[dCard.id] = dCard;
+};
+
+Book.prototype.displayHist = function() {
+  var elem = document.getElementById("objects");
+  var obj;
+  for(var key in this.displayed){
+    obj = this.displayed[key];
+    obj.makeCicle();
+  }
 };
