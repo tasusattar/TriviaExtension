@@ -8,9 +8,6 @@ var DisplayedCard = (function(){
   nextId++;
   this.displayed = false;
   this.date = "";
-  this.liked = false;
-  this.highlighted = false;
-  this.disliked = false;
   this.choices = {
     "liked": false,
     "highlighted": false,
@@ -41,6 +38,7 @@ DisplayedCard.prototype.makeCicle = function() {
   var anchor = document.createElement("a");
   anchor.href = "#"
   anchor.className = "cardCircles";
+  anchor.className += " plain";
   anchor.id = that.id;
   anchor.onclick = function(){
     that.selected();
@@ -66,13 +64,28 @@ DisplayedCard.prototype.displayBtns = function() {
   }
 
   elem.replaceChild(btnsblock, elem.childNodes[0]);
-  makeClickable(that);
+  that.makeInteractive();
 };
+
+DisplayedCard.prototype.makeInteractive = function(){
+  var that = this;
+  document.getElementById("liked").addEventListener("click", function(){
+    that.colorSwitch("liked");
+  });
+  document.getElementById("highlighted").addEventListener("click", function(){
+    that.colorSwitch("highlighted");
+  });
+  document.getElementById("disliked").addEventListener("click", function(){
+    that.colorSwitch("disliked");
+  });
+}
 
 DisplayedCard.prototype.colorSwitch = function(action){
   this.choices[action] = !this.choices[action];
+  this.changeOpacity(action);
   var elem = document.getElementById(this.id);
   elem.classList.toggle(action);
+  elem.classList.remove("plain");
 
   if (action == "disliked"){
     this.choices["liked"] = false;
@@ -82,48 +95,13 @@ DisplayedCard.prototype.colorSwitch = function(action){
     this.choices["disliked"] = false;
     elem.classList.remove("disliked");
   }
-};
 
-// DisplayedCard.prototype.likeSwitch = function() {
-//   this.liked = !this.liked;
-//   var elem = document.getElementById(this.id);
-//   elem.classList.toggle("liked");
-//
-//   if (this.liked === true){
-//     this.disliked = false;
-//     elem.classList.remove("disliked");
-//   }
-//
-//   this.changeBorderColor();
-// };
-//
-// DisplayedCard.prototype.highlightSwitch = function() {
-//   this.highlighted = !this.highlighted;
-//   var elem = document.getElementById(this.id);
-//   elem.classList.toggle("highlighted");
-//
-//   if (this.highlighted === true){
-//     this.disliked = false;
-//     elem.classList.remove("disliked");
-//   }
-//
-//   this.changeInnerColor();
-// };
-//
-// DisplayedCard.prototype.dislikeSwitch = function() {
-//   this.disliked = !this.disliked;
-//   var elem = document.getElementById(this.id);
-//   elem.classList.toggle("disliked");
-//
-//   if (this.disliked === true){
-//     this.liked = false;
-//     this.highlighted = false;
-//     elem.classList.remove("liked", "highlighted");
-//   }
-//
-//   this.changeBorderColor();
-//   this.changeInnerColor();
-// };
+  if ((!elem.classList.contains("liked")) &&
+  (!elem.classList.contains("highlighted")) &&
+  (!elem.classList.contains("disliked"))){
+    elem.classList.add("plain");
+  }
+};
 
 DisplayedCard.prototype.changeBorderColor = function(){
   if (this.disliked === true){
@@ -150,16 +128,14 @@ DisplayedCard.prototype.changeInnerColor = function() {
   }
 };
 
-var makeClickable = function(card){
-  document.getElementById("liked").addEventListener("click", function(){
-    card.colorSwitch("liked");
-  });
-  document.getElementById("highlighted").addEventListener("click", function(){
-    card.colorSwitch("highlighted");
-  });
-  document.getElementById("disliked").addEventListener("click", function(){
-    card.colorSwitch("disliked");
-  });
+DisplayedCard.prototype.changeOpacity = function(id){
+  var elem = document.getElementById(id);
+  if (this.choices[id]){
+  elem.style.opacity = 1;
+  }
+  else {
+    elem.style.opacity = 0.4;
+  }
 }
 
 var todaysDate = function(){

@@ -5,9 +5,8 @@
 
   <meta charset="utf-8">
 
-  <link type="text/css" rel="stylesheet" href="sideBar.css" media="screen,projection"/>
-
   <link type="text/css" rel="stylesheet" href="style.css" media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="sideBar.css" media="screen,projection"/>
 
   <script src="flashcard.js"></script>
   <!-- <script src="sideBar.js"></script> -->
@@ -16,40 +15,53 @@
 </head>
 
 <body>
+  <div id="full">
+    <div id="mySidenav" class="sidenav">
 
-  <div id="mySidenav" class="sidenav">
-    <a href="#" id="closebtn">&times;</a>
+      <a id="closebtn" href="#">&times;</a>
 
-    <div class="tabBar">
-      <a href="#" id="history">History</a>
-      <a href="#" id="books">Books</a>
-    </div>
+      <input id="searchBar" type="text" name="search" placeholder="Search...">
 
-    <div id="objects">
-      <div id="histObjs" class="objs"></div>
-      <div id="bookObjs" class="objs"></div>
-    </div>
-  </div>
+      <div id="filterBar">
+        <div style="color: #818181; font-size: 1.1em">Filter :</div>
+        <a href="#" id="likedFilter"><span>&times;</span></a>
+        <a href="#" id="highlightedFilter"><span>&times;</span></a>
+        <a href="#" id="dislikedFilter"><span>&times;</span></a>
+        <a href="#" id="plainFilter"><span>&times;</span></a>
+      </div>
 
-  <div id="content_screen">
-    <a href="#" id="navbtn">&#9782;</a>
+      <div id="tabBar">
+        <a href="#" id="history">History</a>
+        <a href="#" id="books">Books</a>
+      </div>
 
-    <div id="topLeft">
-      <div id="tlContainer">
-        <p id="category"></p>
-        <p id="dateDisplay"></p>
+      <div id="objects">
+        <div id="histObjs" class="objs"></div>
+        <div id="bookObjs" class="objs"></div>
       </div>
     </div>
 
-    <div id="bottomRight">
-      <!-- <a href="#" id="like" class="colorBtns"></a>
-      <a href="#" id="highlight" class="colorBtns"></a>
-      <a href="#" id="dislike" class="colorBtns"></a> -->
+    <div id="content_screen">
+      <a href="#" id="navbtn">&#9782;</a>
+
+      <div id="topLeft">
+        <div id="tlContainer">
+          <p id="category"></p>
+          <p id="dateDisplay"></p>
+        </div>
+      </div>
+
+      <div id="bottomRight">
+      </div>
+
+      <div id="content-circle">
+        <div id="content">
+          <div class="content-container"><div id="img">place-holder</div></div>
+          <div class="content-container"><div id="info">Fix Hydro Payment</div></div>
+        </div>
+      </div>
     </div>
 
-    <div id="content">
-      <p id="info">Fix Hydro Payment</p>
-    </div>
   </div>
 
   <script src="system.js"></script>

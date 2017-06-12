@@ -1,55 +1,105 @@
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    right: 0; /* Right Sided */
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    /*padding-top: 60px; /* Place content 60px from the top */*/
-    transition: .5s; /* 0.5 second transition effect to slide in the sidenav */
+#mySidenav{
+  display: none;
+  position: relative;
+  flex-grow: 1;
+  order: 2;
+  width: 5%;
+  background-color: #111;
+  z-index: 10;
+  overflow-x: hidden;
+  border-left-width: medium;
+  border-left-style: outset;
+  border-left-color: black;
 }
 
 /* The navigation menu links */
 .sidenav a {
-    /*padding: 8px 8px 8px 32px;*/
-    text-decoration: none;
-    /*font-size: 25px;*/
-    color: #818181;
-    display: block;
-    transition: 0.3s
+  /*padding: 8px 8px 8px 32px;*/
+  text-decoration: none;
+  /*font-size: 25px;*/
+  color: #818181;
+  display: block;
+  transition: 0.3s
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+  color: #f1f1f1;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav #closebtn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 1.5em;
-    /*margin-left: 50px;*/
+#closebtn {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: inherit;
+  font-size: 1.5em;
+  /*margin-left: 50px;*/
 }
 
-.tabBar{
+#searchBar {
+  position: relative;
+  width: 97%;
+  font-size: 1.25em;
+}
+
+#filterBar{
+  width: 90%;
+  margin-top: 1.5em;
   display: flex;
   flex-direction: row;
-  margin-top: 2em;
+  justify-content: space-around;
+}
+
+#filterBar a {
+  display: block;
+  height: 1.4em;
+  width: 1.4em;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 50%;
+  text-align: center;
+}
+
+#filterBar a span {
+  font-size: 1.5em;
+}
+
+#likedFilter {
+  color: green;
+  background-color: green;
+}
+
+#highlightedFilter {
+  color: gold;
+  background-color: gold;
+}
+
+#dislikedFilter {
+  color: red;
+  background-color: red;
+}
+
+#plainFilter {
+  color: white;
+  background-color: white;
+}
+
+#tabBar{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
   justify-content: space-between;
 }
 
-.tabBar a{
+#tabBar a{
   width: 49%;
   padding: 0.5em 0 0.5em 0;
   /*padding: 0.5em 2em 0.5em 2em;*/
   border-bottom: 0.1em solid #818181;
 }
 
-.tabBar a:hover, .offcanvas a:focus{
+#tabBar a:hover, .offcanvas a:focus{
     color: #f1f1f1;
     border-bottom: 0.1em solid #f1f1f1;
 }
@@ -67,7 +117,7 @@
   width: 2em;
   height: 2em;
   border-style: solid;
-  border-width: thin;
+  border-width: medium;
   border-radius: 50%;
   border-color: black;
   background-color: white;
@@ -75,7 +125,6 @@
 
 .liked {
   border-color: green;
-  border-width: medium;
 }
 
 .highlighted {
@@ -83,14 +132,7 @@
 }
 
 .disliked {
-  border-color: red;
   background-color: red;
-  border-width: medium;
-}
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#content_screen {
-    transition: margin-right .5s;
-    /*padding: 20px;*/
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
